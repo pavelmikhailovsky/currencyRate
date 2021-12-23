@@ -45,9 +45,9 @@ public class ExchangeRatesServiceImpl implements ExchangeRatesService {
         Double latestCurrencyRate = getLatestCurrencyRate(currencyCode, currencyRateClient);
         Double yesterdayCurrencyRate = getYesterdayCurrencyRate(currencyCode, currencyRateClient);
 
-        if (latestCurrencyRate < yesterdayCurrencyRate) {
+        if (latestCurrencyRate != null && latestCurrencyRate < yesterdayCurrencyRate) {
             gif = getGifDependingCurrencyRate("broke", gifClient);
-        } else if (latestCurrencyRate > yesterdayCurrencyRate) {
+        } else if (latestCurrencyRate != null && latestCurrencyRate > yesterdayCurrencyRate) {
             gif = getGifDependingCurrencyRate("rich", gifClient);
         }
 
