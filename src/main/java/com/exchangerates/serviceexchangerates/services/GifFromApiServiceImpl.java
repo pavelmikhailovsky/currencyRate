@@ -18,6 +18,27 @@ public class GifFromApiServiceImpl implements GifFromApiService {
     @Value("${feign.client.gif.images.type.url}")
     private String gifImagesTypeUrl;
 
+    /**
+     *
+     * @param tag
+     * @param gifClient
+     *
+     * @return string from json: {
+     *     data: {
+     *         ...
+     *         images: {
+     *             ...
+     *             gifImagesType: {
+     *                 ...
+     *                 gifImagesTypeUrl: string
+     *                 ...
+     *             }
+     *             ...
+     *         }
+     *     }
+     * }
+     *
+     */
     @Override
     public String getGifDependingCurrencyRate(String tag, GifClient gifClient) {
         GifJsonModel data = gifClient.getGifSearchResults(gifAppId, tag);
