@@ -2,7 +2,7 @@ package com.exchangerates.serviceexchangerates.services;
 
 import com.exchangerates.serviceexchangerates.services.feign.gif.GifClient;
 import com.exchangerates.serviceexchangerates.services.feign.gif.GifJsonModel;
-import com.exchangerates.serviceexchangerates.services.feign.gif.GifJsonModelResult;
+import com.google.gson.internal.LinkedTreeMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +19,9 @@ public class GifFromApiServiceImpl implements GifFromApiService {
     private String gifImagesTypeUrl;
 
     @Override
-    public String getGifDependingCurrencyRate(String searchWord, GifClient gifClient) {
-        GifJsonModelResult data = gifClient.getGifSearchResults(gifAppId, searchWord);
-        GifJsonModel gifJsonModel = data.getData().get(0);
-        return (String) gifJsonModel.getImages().get(gifImagesType).get(gifImagesTypeUrl);
+    public String getGifDependingCurrencyRate(String tag, GifClient gifClient) {
+        GifJsonModel data = gifClient.getGifSearchResults(gifAppId, tag);
+        LinkedTreeMap<String, LinkedTreeMap<String, Object>> images = (LinkedTreeMap<String, LinkedTreeMap<String, Object>>) data.getData().get("images");
+        return (String) images.get(gifImagesType).get(gifImagesTypeUrl);
     }
 }

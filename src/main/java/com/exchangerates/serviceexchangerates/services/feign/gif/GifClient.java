@@ -5,8 +5,8 @@ import feign.RequestLine;
 
 public interface GifClient {
 
-    @RequestLine("GET ?api_key={appId}&q={search}&limit=1")
-    GifJsonModelResult getGifSearchResults(@Param("appId") String appId,
-                                           @Param("search") String searchWord);
+    @RequestLine("GET ?api_key={appId}&tag={tag}")
+    GifJsonModel getGifSearchResults(@Param("appId") String appId,
+                                     @Param("tag") String tag);
 
 }

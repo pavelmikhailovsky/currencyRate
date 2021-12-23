@@ -4,6 +4,6 @@ import com.exchangerates.serviceexchangerates.services.feign.gif.GifClient;
 
 public interface GifFromApiService {
 
-    String getGifDependingCurrencyRate(String searchWord, GifClient gifClient);
+    String getGifDependingCurrencyRate(String tag, GifClient gifClient);
 
 }

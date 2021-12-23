@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GifJsonModel {
 
-    private LinkedTreeMap<String, LinkedTreeMap<String, Object>> images;
+    private LinkedTreeMap<String, Object> data;
 
-    public LinkedTreeMap<String, LinkedTreeMap<String, Object>> getImages() {
-        return images;
+    public LinkedTreeMap<String, Object> getData() {
+        return data;
     }
 
-    public void setImages(LinkedTreeMap<String, LinkedTreeMap<String, Object>> images) {
-        this.images = images;
+    public void setData(LinkedTreeMap<String, Object> data) {
+        this.data = data;
     }
 }
